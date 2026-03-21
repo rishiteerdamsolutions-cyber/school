@@ -38,8 +38,8 @@ export function Admissions() {
             </h2>
             <p className="mt-4 text-[var(--text-muted)]">
               Guided tours, scholarship counselling, and a friendly onboarding
-              team — mirror that warmth on your homepage with a premium demo
-              parents can feel.
+              team - and convert that trust into campus visit bookings and
+              confirmed admissions.
             </p>
           </div>
           <motion.a

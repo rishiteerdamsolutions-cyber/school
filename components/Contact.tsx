@@ -101,18 +101,18 @@ export function Contact() {
                 <span className="text-[var(--text-muted)]">Phone:</span>{" "}
                 <a
                   className="font-medium text-[var(--primary)] underline-offset-2 hover:underline"
-                  href="tel:+919999999999"
+                  href="tel:+919505009699"
                 >
-                  +91 99999 99999
+                  +91 95050 09699
                 </a>
               </li>
               <li>
                 <span className="text-[var(--text-muted)]">Email:</span>{" "}
                 <a
                   className="font-medium text-[var(--primary)] underline-offset-2 hover:underline"
-                  href="mailto:hello@eschool.demo"
+                  href="mailto:aideveloperindia@gmail.com"
                 >
-                  hello@eschool.demo
+                  aideveloperindia@gmail.com
                 </a>
               </li>
               <li>

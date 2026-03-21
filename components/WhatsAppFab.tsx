@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const DEFAULT_WA = "919999999999";
+const DEFAULT_WA = "919505009699";
 
 export function WhatsAppFab() {
   const num =
@@ -10,7 +10,7 @@ export function WhatsAppFab() {
     process.env.NEXT_PUBLIC_WHATSAPP.length > 0
       ? process.env.NEXT_PUBLIC_WHATSAPP.replace(/\D/g, "")
       : DEFAULT_WA;
-  const href = `https://wa.me/${num}?text=${encodeURIComponent("Hi — I'd like a school website demo.")}`;
+  const href = `https://wa.me/${num}?text=${encodeURIComponent("Hi, I want a website that brings more admissions for my school.")}`;
 
   return (
     <motion.a

@@ -48,11 +48,10 @@ export function Home() {
           </main>
           <footer className="border-t border-[var(--border)] bg-[var(--bg-alt)] py-10 text-center text-sm text-[var(--text-muted)]">
             <p className="font-display text-[var(--text)]">
-              E-School Website Demo Platform
+              Aideveloper India - School Growth Websites
             </p>
             <p className="mt-2">
-              Switch themes with the control in the header - Alt+1 / Alt+2 /
-              Alt+3
+              Built to generate enquiries, increase campus visits, and improve admissions conversion.
             </p>
           </footer>
         </motion.div>

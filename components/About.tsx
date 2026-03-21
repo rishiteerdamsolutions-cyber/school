@@ -30,9 +30,9 @@ export function About() {
             <h2 className="font-display mt-3 text-3xl font-bold md:text-4xl">
               Built for tomorrow&apos;s learners
             </h2>
-            <p className="mt-5 text-[var(--text-muted)] leading-relaxed">
+            <p className="mt-5 leading-relaxed text-[var(--text-muted)]">
               We blend rigorous academics with innovation labs, mentorship, and
-              wellbeing — a campus experience parents can explore online before
+              wellbeing - a campus experience parents can explore online before
               they ever visit in person.
             </p>
             <ul className="mt-8 space-y-3 text-sm text-[var(--text)]">
@@ -70,7 +70,7 @@ export function About() {
         className="scroll-mt-24 border-b border-[var(--border)] bg-[var(--bg)] py-24 md:py-32"
       >
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="grid gap-16 lg:grid-cols-12 lg:items-start">
+          <div className="grid gap-14 lg:grid-cols-12 lg:items-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -78,11 +78,16 @@ export function About() {
               className="lg:col-span-5"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--accent)]">
-                About the school
+                Why parents choose this school
               </p>
               <h2 className="font-display mt-4 text-4xl font-semibold leading-tight text-[var(--text)] md:text-[2.75rem]">
-                A calm, ambitious environment for global citizens
+                High-trust positioning that increases premium admissions
               </h2>
+              <p className="mt-6 text-[var(--text-muted)]">
+                This template combines elegant storytelling with measurable
+                admissions outcomes, so marketing teams and principals align on
+                the same goal: more qualified parent enquiries.
+              </p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -91,13 +96,7 @@ export function About() {
               transition={{ delay: 0.1 }}
               className="lg:col-span-7"
             >
-              <p className="text-lg leading-relaxed text-[var(--text-muted)]">
-                Our programmes emphasise inquiry, integrity, and leadership.
-                Small class sizes, dedicated tutors, and a culture of respect
-                help every child find their voice — beautifully reflected in a
-                website that feels as refined as your campus.
-              </p>
-              <div className="mt-12 grid gap-8 sm:grid-cols-2">
+              <div className="grid gap-8 sm:grid-cols-2">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-md)]">
                   <Image
                     src={IMG}
@@ -106,23 +105,21 @@ export function About() {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex flex-col justify-end space-y-6 border-l border-[var(--border)] pl-8">
-                  <div>
-                    <p className="font-display text-4xl text-[var(--primary)]">
-                      40+
-                    </p>
-                    <p className="text-sm text-[var(--text-muted)]">
-                      Co-curricular clubs
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-display text-4xl text-[var(--primary)]">
-                      1:12
-                    </p>
-                    <p className="text-sm text-[var(--text-muted)]">
-                      Average class ratio
-                    </p>
-                  </div>
+                <div className="space-y-4">
+                  {[
+                    ["Admissions landing pages", "Dedicated campaign pages for each grade.", "31%"],
+                    ["Parent confidence stack", "Results, faculty profiles, and testimonials above fold.", "2.1x"],
+                    ["Lead quality filters", "Capture grade, intent, and location before counsellor call.", "46%"],
+                  ].map(([title, desc, metric]) => (
+                    <div
+                      key={title}
+                      className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-soft)]"
+                    >
+                      <p className="font-display text-xl text-[var(--primary)]">{metric}</p>
+                      <p className="mt-1 text-sm font-semibold text-[var(--text)]">{title}</p>
+                      <p className="mt-1 text-sm text-[var(--text-muted)]">{desc}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -132,14 +129,13 @@ export function About() {
     );
   }
 
-  /* trust */
   return (
     <section
       id="about"
       className="scroll-mt-24 border-b-2 border-[var(--border)] bg-[var(--bg)] py-16 md:py-20"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+        <div className="grid gap-8 md:grid-cols-3 md:gap-8">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -147,27 +143,28 @@ export function About() {
             className="md:col-span-2 rounded-[var(--radius-md)] border-2 border-[var(--border)] bg-[var(--surface)] p-6 md:p-8"
           >
             <h2 className="font-display text-2xl font-bold text-[var(--text)] md:text-3xl">
-              About our school
+              Why this website wins admissions for traditional schools
             </h2>
             <p className="mt-4 leading-relaxed text-[var(--text-muted)]">
-              For over three decades we have served our community with honest
-              education, disciplined habits, and care for every child. Our
-              teachers know families by name — your website should feel just as
-              welcoming and clear.
+              Families decide emotionally first and logically next. This layout
+              gives both: a familiar school tone plus modern clarity on fees,
+              facilities, achievements, and enquiry response.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-alt)] p-4">
                 <p className="text-sm font-bold text-[var(--primary)]">
-                  Mission
+                  Local search visibility
                 </p>
                 <p className="mt-1 text-sm text-[var(--text-muted)]">
-                  Affordable excellence rooted in values and service.
+                  Built to rank for nearby school intent and capture calls.
                 </p>
               </div>
               <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-alt)] p-4">
-                <p className="text-sm font-bold text-[var(--accent)]">Vision</p>
+                <p className="text-sm font-bold text-[var(--accent)]">
+                  Faster admissions closure
+                </p>
                 <p className="mt-1 text-sm text-[var(--text-muted)]">
-                  Confident learners who contribute to society.
+                  Structured FAQs and lead forms reduce parent hesitation.
                 </p>
               </div>
             </div>
@@ -194,8 +191,8 @@ export function About() {
               Dr. Meera Krishnan
             </p>
             <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
-              &ldquo;We believe discipline and kindness go together. A clear
-              website helps parents trust us before the first conversation.&rdquo;
+              &ldquo;Parents trust schools that communicate clearly. This website helps
+              us answer doubts early and convert visits into admissions.&rdquo;
             </p>
           </motion.aside>
         </div>

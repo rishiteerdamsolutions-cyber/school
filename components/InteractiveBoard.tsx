@@ -296,7 +296,7 @@ export function InteractiveBoard() {
                 className="mt-6 inline-flex text-sm font-semibold text-[var(--primary)] underline-offset-4 hover:underline"
                 onClick={(e) => e.preventDefault()}
               >
-                Download circular (demo)
+                Download circular
               </a>
             </motion.div>
           </motion.div>

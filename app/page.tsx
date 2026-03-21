@@ -35,14 +35,14 @@ const faqJsonLd = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "E-School Website Demo Platform",
+  name: "Aideveloper India",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   contactPoint: [
     {
       "@type": "ContactPoint",
       contactType: "sales",
-      telephone: "+91-99999-99999",
-      email: "hello@eschool.demo",
+      telephone: "+91-95050-09699",
+      email: "aideveloperindia@gmail.com",
       areaServed: "IN",
       availableLanguage: ["en"],
     },

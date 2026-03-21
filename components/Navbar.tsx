@@ -39,9 +39,9 @@ export function Navbar() {
           href="#top"
           className="font-display text-lg font-bold tracking-tight text-[var(--text)] md:text-xl"
         >
-          <span className="text-[var(--primary)]">E‑School</span>{" "}
+          <span className="text-[var(--primary)]">Aideveloper</span>{" "}
           <span className="hidden font-normal text-[var(--text-muted)] sm:inline">
-            Demo
+            India
           </span>
         </Link>
 
