@@ -4,8 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
 
-const IMG =
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80";
+/** Distinct, education-focused Unsplash sources (students vs campus). */
+const IMG_STUDENTS =
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80";
+const IMG_CAMPUS =
+  "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80";
 
 export function About() {
   const { theme } = useTheme();
@@ -14,7 +17,7 @@ export function About() {
     return (
       <section
         id="about"
-        className="scroll-mt-24 border-b border-white/10 bg-[var(--bg-alt)] py-20 md:py-28"
+        className="scroll-mt-28 border-b border-white/10 bg-[var(--bg-alt)] py-20 md:py-28"
       >
         <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-2 md:px-6">
           <motion.div
@@ -53,10 +56,24 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: 0.08 }}
-            className="relative min-h-[280px] overflow-hidden rounded-[var(--radius-lg)] border border-white/10"
+            className="relative min-h-[300px] overflow-hidden rounded-[var(--radius-lg)] border border-white/10 md:min-h-[380px]"
           >
-            <Image src={IMG} alt="Students" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
+            <Image
+              src={IMG_STUDENTS}
+              alt="Students collaborating in the classroom"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
+                Our students
+              </p>
+              <p className="font-display mt-2 text-xl font-bold leading-snug text-white md:text-2xl">
+                Curious minds, guided projects, and space to grow together.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -67,7 +84,7 @@ export function About() {
     return (
       <section
         id="about"
-        className="scroll-mt-24 border-b border-[var(--border)] bg-[var(--bg)] py-24 md:py-32"
+        className="scroll-mt-28 border-b border-[var(--border)] bg-[var(--bg)] py-24 md:py-32"
       >
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-14 lg:grid-cols-12 lg:items-start">
@@ -97,13 +114,24 @@ export function About() {
               className="lg:col-span-7"
             >
               <div className="grid gap-8 sm:grid-cols-2">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-md)]">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)]">
                   <Image
-                    src={IMG}
-                    alt="Campus life"
+                    src={IMG_CAMPUS}
+                    alt="Campus walkways and school buildings"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 35vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/75">
+                      Campus life
+                    </p>
+                    <p className="font-display mt-2 text-lg font-normal leading-snug text-white md:text-xl">
+                      Open walkways, green quads, and room to breathe between
+                      classes.
+                    </p>
+                  </div>
                 </div>
                 <div className="space-y-4">
                   {[
@@ -132,7 +160,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="scroll-mt-24 border-b-2 border-[var(--border)] bg-[var(--bg)] py-16 md:py-20"
+      className="scroll-mt-28 border-b-2 border-[var(--border)] bg-[var(--bg)] py-16 md:py-20"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="grid gap-8 md:grid-cols-3 md:gap-8">

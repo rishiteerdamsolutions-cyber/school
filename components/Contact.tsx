@@ -77,7 +77,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 bg-[var(--bg)] py-16 md:py-24"
+      className="scroll-mt-28 bg-[var(--bg)] py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2">
@@ -90,11 +90,10 @@ export function Contact() {
               Contact
             </p>
             <h2 className="font-display mt-2 text-3xl font-bold md:text-4xl">
-              Start your admissions growth launch
+              Plan a visit or ask a question
             </h2>
             <p className="mt-4 text-[var(--text-muted)]">
-              This form writes directly to MongoDB with campaign attribution so
-              your team can track real admissions intent.
+              Short form with optional UTM fields for your admissions team.
             </p>
             <ul className="mt-8 space-y-3 text-sm">
               <li>
@@ -201,7 +200,7 @@ export function Contact() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               disabled={submitting}
-              className="w-full rounded-[var(--radius-md)] bg-[var(--primary)] py-3 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-70"
+              className="w-full rounded-[var(--radius-md)] bg-[var(--primary)] py-3 text-sm font-semibold text-[var(--on-primary)] disabled:cursor-not-allowed disabled:opacity-70"
               style={
                 theme === "smart"
                   ? { color: "#041016", boxShadow: "0 0 28px -8px var(--glow)" }

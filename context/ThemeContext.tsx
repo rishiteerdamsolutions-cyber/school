@@ -61,17 +61,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [theme, mounted]);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (!e.altKey || e.repeat) return;
-      if (e.key === "1") setThemeState("smart");
-      else if (e.key === "2") setThemeState("international");
-      else if (e.key === "3") setThemeState("trust");
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
   const setTheme = useCallback((t: ThemeId) => setThemeState(t), []);
 
   const cycleTheme = useCallback(() => {

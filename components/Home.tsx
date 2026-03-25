@@ -47,12 +47,8 @@ export function Home() {
             <Contact />
           </main>
           <footer className="border-t border-[var(--border)] bg-[var(--bg-alt)] py-10 text-center text-sm text-[var(--text-muted)]">
-            <p className="font-display text-[var(--text)]">
-              Aideveloper India - School Growth Websites
-            </p>
-            <p className="mt-2">
-              Built to generate enquiries, increase campus visits, and improve admissions conversion.
-            </p>
+            <p className="font-display text-[var(--text)]">e‑School</p>
+            <p className="mt-2">Minimal video-first themes for school sites.</p>
           </footer>
         </motion.div>
       </AnimatePresence>

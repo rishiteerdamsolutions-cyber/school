@@ -16,7 +16,7 @@ export function Admissions() {
   return (
     <section
       id="admissions"
-      className="scroll-mt-24 border-b border-[var(--border)] bg-[var(--bg-alt)] py-16 md:py-24"
+      className="scroll-mt-28 border-b border-[var(--border)] bg-[var(--bg-alt)] py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <motion.div
@@ -46,7 +46,7 @@ export function Admissions() {
             href="#contact"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="relative mt-8 inline-flex rounded-[var(--radius-md)] bg-[var(--primary)] px-8 py-3.5 text-sm font-semibold text-white md:mt-0"
+            className="relative mt-8 inline-flex rounded-[var(--radius-md)] bg-[var(--primary)] px-8 py-3.5 text-sm font-semibold text-[var(--on-primary)] md:mt-0"
             style={
               theme === "smart"
                 ? { color: "#041016", boxShadow: "0 0 32px -6px var(--glow)" }

@@ -9,7 +9,7 @@ const shots = [
   "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80",
   "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
   "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1427504491435-4223aa9d007a?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1580582932707-520ebe837e3c?auto=format&fit=crop&w=900&q=80",
   "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80",
 ];
 
@@ -19,7 +19,7 @@ export function Gallery() {
   return (
     <section
       id="gallery"
-      className="scroll-mt-24 border-b border-[var(--border)] bg-[var(--bg)] py-16 md:py-24"
+      className="scroll-mt-28 border-b border-[var(--border)] bg-[var(--bg)] py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <motion.div

@@ -1,194 +1,156 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
-import { StatsStrip } from "@/components/StatsStrip";
 
-const SmartHeroCanvas = dynamic(
-  () => import("@/components/hero/SmartHeroCanvas"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/15 via-transparent to-violet-500/20" />
-    ),
-  },
-);
+const SMART_VIDEO =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260206_044704_dd33cb15-c23f-4cfc-aa09-a0465d4dcb54.mp4";
+const INTERNATIONAL_VIDEO =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4";
+const REGULAR_VIDEO =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_151826_c7218672-6e92-402c-9e45-f1e0f454bdc4.mp4";
 
-const INTL_HERO =
-  "https://images.unsplash.com/photo-1580582932707-520aed937d7c?auto=format&fit=crop&w=2000&q=80";
-const TRUST_HERO =
-  "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=2000&q=80";
+function ThemeHeroToggle({ className = "" }: { className?: string }) {
+  const { theme, setTheme } = useTheme();
+  const options = [
+    { id: "smart" as const, label: "Smart School" },
+    { id: "international" as const, label: "International School" },
+    { id: "trust" as const, label: "Regular School" },
+  ];
+
+  return (
+    <div
+      className={`inline-flex w-full max-w-3xl flex-col gap-2 rounded-2xl bg-black/25 p-2 backdrop-blur-md sm:flex-row ${className}`}
+    >
+      {options.map((o) => {
+        const active = theme === o.id;
+        return (
+          <button
+            key={o.id}
+            type="button"
+            onClick={() => setTheme(o.id)}
+            className={`relative w-full rounded-xl px-5 py-4 text-left transition-transform sm:text-center ${
+              active ? "text-black" : "text-white"
+            }`}
+          >
+            {active && (
+              <motion.span
+                layoutId="hero-theme-pill"
+                className="absolute inset-0 rounded-xl bg-white"
+                transition={{ type: "spring", stiffness: 420, damping: 36 }}
+              />
+            )}
+            <span className="relative z-10 block text-sm font-semibold uppercase tracking-wide">
+              {o.label}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export function Hero() {
   const { theme } = useTheme();
-
-  const cta = (
-    <motion.a
-      href="#contact"
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-      className="inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-[box-shadow] hover:shadow-xl"
-      style={
-        theme === "smart"
-          ? {
-              boxShadow: "0 0 40px -8px var(--glow)",
-              color: "#041016",
-            }
-          : { color: "#fff" }
-      }
-    >
-      Book admissions strategy call
-    </motion.a>
-  );
 
   if (theme === "smart") {
     return (
       <section
         id="top"
-        className="relative overflow-hidden border-b border-white/10"
+        className="relative min-h-screen overflow-hidden bg-[#21346e]"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(34,211,238,0.2),transparent_55%),radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.18),transparent_50%)]" />
-        <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] [background-size:48px_48px]" />
-        <div className="relative mx-auto grid min-h-[78vh] max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-6 md:py-20">
-          <div className="relative z-10">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-4 inline-flex rounded-full border border-[var(--primary)]/40 bg-[var(--surface)] px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-[var(--primary)]"
+        <div className="relative z-10 mx-auto mt-24 max-w-6xl px-6 pt-36 md:pt-52">
+          <ThemeHeroToggle className="mt-0" />
+
+          <h1
+            className="mt-10 font-display text-6xl font-bold uppercase leading-[0.98] tracking-[-2px] text-white sm:text-8xl md:text-[100px]"
+            style={{ letterSpacing: "-3px" }}
+          >
+            <span className="block">NEW ERA</span>
+            <span className="block">OF LEARNING</span>
+            <span className="block">STARTS HERE</span>
+          </h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="mt-10"
+          >
+            <motion.a
+              href="#contact"
+              className="relative inline-flex h-[65px] w-[184px] items-center justify-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Futuristic campus web
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05 }}
-              className="font-display text-4xl font-black leading-[1.05] tracking-tight text-[var(--text)] sm:text-5xl lg:text-6xl"
-            >
-              Launch your school website in{" "}
-              <span className="bg-gradient-to-r from-cyan-300 to-violet-300 bg-clip-text text-transparent">
-                7 days
+              <svg
+                className="absolute inset-0 h-full w-full"
+                viewBox="0 0 184 65"
+                fill="none"
+                aria-hidden
+              >
+                <path
+                  d="M20 6C9.5 12 4 22 4 32.5C4 51 16 61 34 61H150C168 61 180 51 180 32.5C180 14 168 4 150 4H44C31 4 25 4 20 6Z"
+                  fill="white"
+                />
+              </svg>
+              <span className="relative z-10 font-display text-[20px] font-bold uppercase text-[#161a20]">
+                GET STARTED
               </span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.12 }}
-              className="mt-5 max-w-xl text-lg text-[var(--text-muted)]"
-            >
-              Turn website visitors into admission enquiries with high-trust
-              storytelling, smart lead capture, and conversion-focused design.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-8 flex flex-wrap items-center gap-4"
-            >
-              {cta}
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.28 }}
-              className="mt-12 max-w-lg"
-            >
-              <div className="glass-panel rounded-[var(--radius-lg)] p-5">
-                <StatsStrip />
-              </div>
-            </motion.div>
-          </div>
-          <div className="relative h-[min(52vh,420px)] w-full md:h-[min(60vh,520px)]">
-            <SmartHeroCanvas />
-            <div className="pointer-events-none absolute inset-0">
-              <motion.div
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.22 }}
-                className="glass-panel absolute right-3 top-4 rounded-[var(--radius-md)] p-3 text-xs text-[var(--text)] md:right-6 md:top-6"
-              >
-                <p className="font-semibold text-[var(--primary)]">Lead Funnel</p>
-                <p className="mt-1 text-[var(--text-muted)]">Visit → Enquiry → Campus Tour → Admission</p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="glass-panel absolute bottom-4 left-3 rounded-[var(--radius-md)] p-3 text-xs md:bottom-6 md:left-6"
-              >
-                <p className="font-semibold text-[var(--primary)]">Realtime Snapshot</p>
-                <div className="mt-1 grid grid-cols-2 gap-x-4 gap-y-1 text-[var(--text-muted)]">
-                  <span>Enquiries: 184</span>
-                  <span>Tours: 62</span>
-                  <span>Hot leads: 29</span>
-                  <span>Admissions: 17</span>
-                </div>
-              </motion.div>
-            </div>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
+
+        <video
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={SMART_VIDEO}
+        />
       </section>
     );
   }
 
   if (theme === "international") {
     return (
-      <section id="top" className="relative min-h-[82vh] border-b border-[var(--border)]">
-        <div className="absolute inset-0">
-          <Image
-            src={INTL_HERO}
-            alt="Premium school campus"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/94 via-[var(--primary)]/70 to-[var(--primary)]/25" />
-        </div>
-        <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col justify-center px-4 py-20 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl text-white"
+      <section
+        id="top"
+        className="relative min-h-screen overflow-hidden bg-[hsl(201_100%_13%)]"
+      >
+        <div className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-2 px-6 pb-40 pt-40 text-center md:gap-3 md:py-[90px] md:pt-44">
+          <ThemeHeroToggle className="mx-auto justify-center sm:justify-start" />
+          <h1
+            className="animate-fade-rise max-w-7xl text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-white sm:text-7xl md:text-8xl"
+            style={{ fontFamily: "var(--font-heading-intl), serif" }}
           >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-white/80">
-              Premium international admissions funnel
-            </p>
-            <h1 className="font-display text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-[3.25rem]">
-              Win premium parent trust from the first click
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-white/90">
-              Position your school as the clear first choice with an elegant
-              digital experience that drives enquiries, visits, and admissions.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">{cta}</div>
-          </motion.div>
+            Where{" "}
+            <em className="not-italic text-[var(--text-muted)]">young minds</em>{" "}
+            rise{" "}
+            <em className="not-italic text-[var(--text-muted)]">
+              through calm, clear admissions.
+            </em>
+          </h1>
+          <p className="animate-fade-rise-delay mt-8 max-w-2xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
+            A quiet, confident first impression for families choosing your school.
+          </p>
+          <a
+            href="#contact"
+            className="liquid-glass animate-fade-rise-delay-2 mt-10 cursor-pointer rounded-full px-14 py-5 text-base text-white ring-1 ring-inset ring-white/20 transition-transform hover:scale-[1.03]"
+          >
+            Begin Journey
+          </a>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="mt-14 grid max-w-5xl gap-4 md:grid-cols-4"
-          >
-            {[
-              ["2.4x", "More enquiry submissions"],
-              ["38%", "Lower cost per lead"],
-              ["72h", "Faster parent follow-up"],
-              ["24/7", "Always-on admissions capture"],
-            ].map(([value, label]) => (
-              <div
-                key={label}
-                className="rounded-[var(--radius-md)] border border-white/25 bg-white/95 p-5 text-[var(--text)] shadow-[var(--shadow-soft)]"
-              >
-                <p className="font-display text-3xl font-semibold text-[var(--primary)]">
-                  {value}
-                </p>
-                <p className="mt-1 text-sm text-[var(--text-muted)]">{label}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        <video
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={INTERNATIONAL_VIDEO}
+        />
       </section>
     );
   }
@@ -196,71 +158,36 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="border-b-2 border-[var(--border)] bg-[var(--bg-alt)]"
+      className="relative min-h-screen overflow-hidden bg-black"
     >
-      <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
-        <div className="grid gap-7 md:grid-cols-[1.1fr_1fr] md:items-stretch">
-          <motion.div
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="relative min-h-[260px] overflow-hidden rounded-[var(--radius-md)] border-2 border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-soft)]"
-          >
-            <Image
-              src={TRUST_HERO}
-              alt="School building"
-              fill
-              className="object-cover"
-              sizes="(min-width:768px) 50vw, 100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-            <div className="absolute bottom-4 left-4 rounded-[var(--radius-sm)] bg-white/95 px-3 py-2 text-xs font-semibold text-[var(--primary)]">
-              140+ fresh enquiries in last 30 days
-            </div>
-          </motion.div>
-
-          <div className="flex flex-col gap-5">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-[var(--radius-md)] border-2 border-[var(--border)] bg-[var(--surface)] p-6 md:p-8"
-            >
-              <p className="text-sm font-bold uppercase tracking-wide text-[var(--accent)]">
-                Admissions-first school website
-              </p>
-              <h1 className="font-display mt-2 text-3xl font-bold text-[var(--text)] sm:text-4xl">
-                Bring more parents from search to school visit
-              </h1>
-              <p className="mt-4 text-base leading-relaxed text-[var(--text-muted)]">
-                Build confidence for families with clear fees information,
-                principal message, notice board updates, and one-click enquiry
-                journeys that work on every phone.
-              </p>
-              <div className="mt-7">{cta}</div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="rounded-[var(--radius-md)] border-2 border-[var(--border)] bg-[var(--surface)] p-5"
-            >
-              <div className="grid gap-3 sm:grid-cols-3">
-                {[
-                  ["Local SEO", "Rank for school near me"],
-                  ["Fast forms", "Capture parent enquiries"],
-                  ["Trust content", "Convert to campus visits"],
-                ].map(([title, text]) => (
-                  <div key={title} className="rounded border border-[var(--border)] p-3">
-                    <p className="text-sm font-bold text-[var(--primary)]">{title}</p>
-                    <p className="mt-1 text-xs text-[var(--text-muted)]">{text}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-2 px-6 pb-40 pt-40 text-center text-white md:gap-3 md:py-[90px] md:pt-44">
+        <ThemeHeroToggle className="mx-auto justify-center sm:justify-start" />
+        <h1
+          className="animate-fade-rise max-w-7xl text-5xl leading-[0.95] tracking-[-2.46px] sm:text-7xl md:text-8xl"
+          style={{ fontFamily: "var(--font-heading-intl), serif" }}
+        >
+          Focus in a Distracted World
+        </h1>
+        <p className="animate-fade-rise-delay mt-8 max-w-2xl text-base leading-relaxed sm:text-lg">
+          Clear routines, honest communication, and room to grow—without the
+          noise.
+        </p>
+        <a
+          href="#contact"
+          className="animate-fade-rise-delay-2 mt-10 rounded-full border-2 border-white/85 bg-black/40 px-14 py-5 text-base font-medium text-white shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-transform hover:scale-[1.03] hover:bg-black/55"
+        >
+          Begin Journey
+        </a>
       </div>
+
+      <video
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        src={REGULAR_VIDEO}
+      />
     </section>
   );
 }

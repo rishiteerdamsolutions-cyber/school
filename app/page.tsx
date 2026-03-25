@@ -35,7 +35,7 @@ const faqJsonLd = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Aideveloper India",
+  name: "e-School",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   contactPoint: [
     {

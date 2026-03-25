@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
-import { THEME_LABELS, THEMES, type ThemeId } from "@/themes";
 
 const links = [
   { href: "#about", label: "About" },
@@ -16,45 +15,77 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
+/** Minimal cinematic nav (International + Regular hero spec). */
+const cinematicLinks: { href: string; label: string }[] = [
+  { href: "#top", label: "Home" },
+  { href: "#facilities", label: "Campus" },
+  { href: "#about", label: "About" },
+  { href: "#board", label: "News" },
+  { href: "#contact", label: "Reach us" },
+];
+
 export function Navbar() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
 
   const bar =
     theme === "smart"
-      ? "border-b border-white/10 bg-[var(--bg)]/80 backdrop-blur-xl"
-      : theme === "international"
-        ? "border-b border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-md"
-        : "border-b-2 border-[var(--border)] bg-[var(--surface)]";
+      ? "border-b border-white/10 bg-[#21346e]/35 backdrop-blur-md"
+      : "border-b border-white/10 bg-transparent";
 
   return (
     <motion.header
       layout
-      className={`sticky top-0 z-[95] ${bar}`}
+      className={`fixed top-0 left-0 right-0 z-[95] ${bar}`}
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 md:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4 md:px-8 md:py-6">
         <Link
           href="#top"
-          className="font-display text-lg font-bold tracking-tight text-[var(--text)] md:text-xl"
+          className={`font-bold tracking-tight text-white ${
+            theme === "international" || theme === "trust"
+              ? "text-2xl md:text-3xl"
+              : "font-display text-lg md:text-xl"
+          }`}
+          style={
+            theme === "international" || theme === "trust"
+              ? { fontFamily: "var(--font-heading-intl), serif" }
+              : undefined
+          }
         >
-          <span className="text-[var(--primary)]">Aideveloper</span>{" "}
-          <span className="hidden font-normal text-[var(--text-muted)] sm:inline">
-            India
-          </span>
+          e‑School<sup className="text-xs font-normal">®</sup>
         </Link>
 
         <nav
-          className="hidden flex-1 justify-center lg:flex"
+          className={`flex-1 justify-center ${
+            theme === "smart" ? "hidden lg:flex" : "hidden md:flex"
+          }`}
           aria-label="Primary"
         >
-          <ul className="flex flex-wrap items-center justify-center gap-1 text-sm">
-            {links.map((l) => (
+          <ul
+            className={`flex items-center text-sm ${
+              theme === "international" || theme === "trust"
+                ? "gap-10"
+                : "flex-wrap justify-center gap-1"
+            }`}
+          >
+            {(theme === "international" || theme === "trust"
+              ? cinematicLinks
+              : links
+            ).map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="rounded-md px-2.5 py-1.5 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text)]"
+                  className={`rounded-md px-2.5 py-1.5 transition-colors ${
+                    theme === "trust"
+                      ? "text-white transition-opacity hover:opacity-80"
+                      : theme === "international"
+                        ? l.href === "#top"
+                          ? "text-white"
+                          : "text-white/70 hover:text-white"
+                        : "text-white/75 hover:bg-white/10 hover:text-white"
+                  }`}
                 >
                   {l.label}
                 </a>
@@ -63,50 +94,16 @@ export function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <div
-            className="flex rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-alt)] p-0.5"
-            role="group"
-            aria-label="Theme"
-          >
-            {THEMES.map((t) => {
-              const active = theme === t;
-              return (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setTheme(t as ThemeId)}
-                  className={`relative rounded-[calc(var(--radius-md)-2px)] px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-colors sm:px-2.5 sm:text-xs ${
-                    active
-                      ? "text-[var(--text)]"
-                      : "text-[var(--text-muted)] hover:text-[var(--text)]"
-                  }`}
-                  title={THEME_LABELS[t]}
-                  aria-pressed={active}
-                >
-                  {active && (
-                    <motion.span
-                      layoutId="theme-pill"
-                      className="absolute inset-0 -z-10 rounded-[calc(var(--radius-md)-2px)] bg-[var(--surface)] shadow-sm ring-1 ring-[var(--border)]"
-                      transition={{
-                        type: "spring",
-                        stiffness: 380,
-                        damping: 32,
-                      }}
-                    />
-                  )}
-                  <span className="relative z-10">
-                    {t === "smart"
-                      ? "Smart"
-                      : t === "international"
-                        ? "Intl"
-                        : "Trust"}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <a
+          href="#contact"
+          className={
+            theme === "international" || theme === "trust"
+              ? "liquid-glass hidden rounded-full px-6 py-2.5 text-sm text-white transition-transform hover:scale-[1.03] sm:inline-flex"
+              : "hidden rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-[#161a20] transition-transform hover:scale-[1.03] sm:inline-flex"
+          }
+        >
+          Begin Journey
+        </a>
       </div>
     </motion.header>
   );

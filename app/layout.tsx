@@ -1,49 +1,24 @@
 import type { Metadata } from "next";
-import {
-  DM_Sans,
-  Merriweather,
-  Orbitron,
-  Outfit,
-  Playfair_Display,
-  Source_Sans_3,
-} from "next/font/google";
+import { Inter, Instrument_Serif, Rubik } from "next/font/google";
 import { ClientProviders } from "@/components/providers/ClientProviders";
 import "./globals.css";
 
-const orbitron = Orbitron({
+const rubik = Rubik({
   variable: "--font-heading-smart",
   subsets: ["latin"],
-  weight: ["500", "700", "900"],
+  weight: ["400", "600", "700", "900"],
 });
 
-const outfit = Outfit({
-  variable: "--font-body-smart",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
-
-const playfair = Playfair_Display({
+const instrumentSerif = Instrument_Serif({
   variable: "--font-heading-intl",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400"],
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
   variable: "--font-body-intl",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const merriweather = Merriweather({
-  variable: "--font-heading-trust",
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-});
-
-const sourceSans = Source_Sans_3({
-  variable: "--font-body-trust",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -51,11 +26,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "School Website Demo Platform | Admissions-Focused Themes",
-    template: "%s | School Website Demo Platform",
+    default: "e-School | 3 School Website Themes",
+    template: "%s | e-School",
   },
   description:
-    "Digital-marketing friendly school website demo: SEO-ready pages, admissions-first CTAs, and conversion-focused design across Smart, International, and Trust themes.",
+    "Minimal, video-first school website themes with an instant toggle: Smart School, International School, and Regular School.",
   keywords: [
     "school website",
     "school admissions website",
@@ -70,24 +45,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    siteName: "School Website Demo Platform",
-    title: "Admissions-Ready School Website Demo",
+    siteName: "e-School",
+    title: "e-School Website Themes",
     description:
-      "A production-grade Next.js demo tailored for school lead generation and admissions growth.",
+      "Three minimal video-first school website themes with instant switching.",
     images: [
       {
         url: "/next.svg",
         width: 1200,
         height: 630,
-        alt: "School Website Demo",
+        alt: "e-School",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Admissions-Ready School Website Demo",
+    title: "e-School Website Themes",
     description:
-      "SEO + conversion-focused school website themes for better admissions outcomes.",
+      "Minimal, video-first themes with instant switching for school websites.",
     images: ["/next.svg"],
   },
   robots: {
@@ -113,7 +88,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-theme="international"
-      className={`${orbitron.variable} ${outfit.variable} ${playfair.variable} ${dmSans.variable} ${merriweather.variable} ${sourceSans.variable} h-full antialiased`}
+      className={`${rubik.variable} ${instrumentSerif.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <ClientProviders>{children}</ClientProviders>

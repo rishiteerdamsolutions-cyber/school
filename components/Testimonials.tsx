@@ -27,7 +27,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="scroll-mt-24 border-b border-[var(--border)] bg-[var(--bg-alt)] py-16 md:py-24"
+      className="scroll-mt-28 border-b border-[var(--border)] bg-[var(--bg-alt)] py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <motion.div

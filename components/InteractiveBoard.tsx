@@ -64,7 +64,7 @@ function NoticeCard({
   const pin =
     theme === "trust" ? (
       <span
-        className="absolute -top-1 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-[var(--accent)] shadow-sm ring-2 ring-white"
+        className="absolute -top-1 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-white/90 shadow-sm ring-2 ring-black/20"
         aria-hidden
       />
     ) : theme === "smart" ? (
@@ -79,7 +79,7 @@ function NoticeCard({
       ? "glass-panel text-left ring-1 ring-white/10 hover:ring-[var(--primary)]/50"
       : theme === "international"
         ? "border border-[var(--border)] bg-[var(--surface)] text-left shadow-[var(--shadow-soft)] hover:border-[var(--primary)]/40"
-        : "border-2 border-[var(--border)] bg-[#fffef8] text-left shadow-[var(--shadow-soft)] hover:border-[var(--accent)]";
+        : "border border-[var(--border)] bg-[var(--surface-elevated)] text-left shadow-[var(--shadow-soft)] hover:border-white/35";
 
   return (
     <motion.button
@@ -114,7 +114,13 @@ function NoticeCard({
       <p className="mt-2 line-clamp-2 text-sm text-[var(--text-muted)]">
         {notice.excerpt}
       </p>
-      <span className="mt-4 text-xs font-semibold text-[var(--accent)]">
+      <span
+        className={
+          theme === "trust"
+            ? "mt-4 text-xs font-semibold text-[var(--text-muted)]"
+            : "mt-4 text-xs font-semibold text-[var(--accent)]"
+        }
+      >
         Tap to read full notice →
       </span>
     </motion.button>
@@ -150,12 +156,12 @@ export function InteractiveBoard() {
       ? "glass-panel border border-white/10 bg-[var(--bg-alt)]/80"
       : theme === "international"
         ? "border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-soft)]"
-        : "border-[3px] border-dashed border-[var(--accent)] bg-[#f7faf7]";
+        : "border border-dashed border-[var(--border)] bg-[var(--surface-elevated)]";
 
   return (
     <section
       id="board"
-      className="scroll-mt-24 border-b border-[var(--border)] bg-[var(--bg-alt)] py-16 md:py-24"
+      className="scroll-mt-28 border-b border-[var(--border)] bg-[var(--bg-alt)] py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <motion.div
@@ -177,7 +183,9 @@ export function InteractiveBoard() {
             </p>
           </div>
           <div
-            className="flex flex-wrap gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] p-1"
+            className={`flex flex-wrap gap-2 rounded-[var(--radius-md)] border border-[var(--border)] p-1 ${
+              theme === "trust" ? "bg-white/5" : "bg-[var(--surface)]"
+            }`}
             role="tablist"
             aria-label="Notice categories"
           >
@@ -217,7 +225,7 @@ export function InteractiveBoard() {
           className={`relative mt-12 rounded-[var(--radius-lg)] p-4 md:p-8 ${frame}`}
         >
           {theme === "trust" && (
-            <p className="mb-4 text-center font-display text-sm font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
+            <p className="mb-4 text-center font-display text-sm font-bold uppercase tracking-[0.2em] text-[var(--text-muted)]">
               School notice board
             </p>
           )}
