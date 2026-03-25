@@ -49,6 +49,7 @@ export function Contact() {
       email: String(data.get("email") || ""),
       grade: String(data.get("grade") || ""),
       message: String(data.get("message") || ""),
+      themeId: theme,
       utmSource: attribution.utmSource,
       utmMedium: attribution.utmMedium,
       utmCampaign: attribution.utmCampaign,

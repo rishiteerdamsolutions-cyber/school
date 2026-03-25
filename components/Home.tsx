@@ -9,6 +9,7 @@ import { FAQ } from "@/components/FAQ";
 import { Facilities } from "@/components/Facilities";
 import { Gallery } from "@/components/Gallery";
 import { Hero } from "@/components/Hero";
+import { ThemePlans } from "@/components/Pricing/ThemePlans";
 import { InteractiveBoard } from "@/components/InteractiveBoard";
 import { Navbar } from "@/components/Navbar";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -36,6 +37,7 @@ export function Home() {
         >
           <main>
             <Hero />
+            <ThemePlans variant="landing" highlightTheme={theme} />
             <About />
             <Admissions />
             <Facilities />

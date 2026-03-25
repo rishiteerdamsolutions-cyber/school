@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 
 const links = [
+  { href: "#pricing", label: "Plans" },
   { href: "#about", label: "About" },
   { href: "#admissions", label: "Admissions" },
   { href: "#facilities", label: "Facilities" },
@@ -18,6 +19,7 @@ const links = [
 /** Minimal cinematic nav (International + Regular hero spec). */
 const cinematicLinks: { href: string; label: string }[] = [
   { href: "#top", label: "Home" },
+  { href: "#pricing", label: "Plans" },
   { href: "#facilities", label: "Campus" },
   { href: "#about", label: "About" },
   { href: "#board", label: "News" },
@@ -70,25 +72,41 @@ export function Navbar() {
                 : "flex-wrap justify-center gap-1"
             }`}
           >
-            {(theme === "international" || theme === "trust"
-              ? cinematicLinks
-              : links
+            {(
+              theme === "trust"
+                ? cinematicLinks
+                : theme === "international"
+                  ? [...cinematicLinks, { href: "/crm", label: "Leads" }]
+                  : [...links, { href: "/crm", label: "Leads" }]
             ).map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className={`rounded-md px-2.5 py-1.5 transition-colors ${
-                    theme === "trust"
-                      ? "text-white transition-opacity hover:opacity-80"
-                      : theme === "international"
-                        ? l.href === "#top"
-                          ? "text-white"
-                          : "text-white/70 hover:text-white"
+                {l.href.startsWith("/") ? (
+                  <Link
+                    href={l.href}
+                    className={`rounded-md px-2.5 py-1.5 transition-colors ${
+                      theme === "international"
+                        ? "text-white/90 hover:text-white"
                         : "text-white/75 hover:bg-white/10 hover:text-white"
-                  }`}
-                >
-                  {l.label}
-                </a>
+                    }`}
+                  >
+                    {l.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={l.href}
+                    className={`rounded-md px-2.5 py-1.5 transition-colors ${
+                      theme === "trust"
+                        ? "text-white transition-opacity hover:opacity-80"
+                        : theme === "international"
+                          ? l.href === "#top"
+                            ? "text-white"
+                            : "text-white/70 hover:text-white"
+                          : "text-white/75 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    {l.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

@@ -15,6 +15,10 @@ Next.js (App Router) demo with **three instant themes** — no page reload:
 - **Interactive notice board** — filters, expandable notices
 - Scroll **progress bar**, **WhatsApp FAB**, admissions **badge**
 - UTM-ready admissions form → `POST /api/leads` (MongoDB)
+- **Lead CRM** at `/crm` (nav **Leads** on International / Smart). Regular theme shows a locked message.
+- **Smart auto follow-up**: WhatsApp template send when `WHATSAPP_*` env is set; otherwise follow-up stays `pending`.
+- **APIs**: `GET /api/leads`, `PATCH /api/leads/[id]`
+- **Plans & quotation** — `/` section **Plans & quotation** (`#pricing`) and dedicated page **`/quotation?theme=smart|international|trust`** (theme prices + marketing tiers + admin/follow-up copy).
 
 ## Setup
 
