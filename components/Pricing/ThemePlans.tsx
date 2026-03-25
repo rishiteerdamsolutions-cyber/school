@@ -20,6 +20,28 @@ type Props = {
 export function ThemePlans({ variant, highlightTheme }: Props) {
   const id = variant === "landing" ? "pricing" : undefined;
 
+  function whatsappUrlForTheme(themeId: ThemeId) {
+    const label = THEME_LABELS[themeId];
+    const basePrice = formatInr(THEME_BASE_INR[themeId]);
+
+    const valueLine =
+      themeId === "smart"
+        ? "Smart CRM + real-time auto follow-up queue (WhatsApp when configured)."
+        : themeId === "international"
+          ? "Lead CRM dashboard to manage and follow up enquiries."
+          : "Enquiry form website (no CRM in Regular tier).";
+
+    const text = `Hi e‑School, I need a quotation for ${label} (${basePrice} + domain). ${valueLine} Please share next steps.`;
+    return `${WHATSAPP_CONTACT_URL}?text=${encodeURIComponent(text)}`;
+  }
+
+  function whatsappUrlForMarketing() {
+    const t = highlightTheme ?? "international";
+    const label = THEME_LABELS[t];
+    const text = `Hi e‑School, I want digital marketing pricing (SEO + Google Business + Google Ads) for ${label}. Please confirm suitable plan tier and next steps.`;
+    return `${WHATSAPP_CONTACT_URL}?text=${encodeURIComponent(text)}`;
+  }
+
   return (
     <section
       id={id}
@@ -104,14 +126,8 @@ export function ThemePlans({ variant, highlightTheme }: Props) {
                   ))}
                 </ul>
                 <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                  <Link
-                    href={`/quotation?theme=${tid}`}
-                    className="inline-flex flex-1 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 py-2.5 text-center text-sm font-semibold text-[var(--on-primary)]"
-                  >
-                    Quotation
-                  </Link>
                   <a
-                    href={WHATSAPP_CONTACT_URL}
+                    href={whatsappUrlForTheme(tid)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex flex-1 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] px-4 py-2.5 text-center text-sm font-semibold text-[var(--text)] hover:bg-[var(--bg)]"
@@ -158,19 +174,21 @@ export function ThemePlans({ variant, highlightTheme }: Props) {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href={WHATSAPP_CONTACT_URL}
+              href={whatsappUrlForMarketing()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-semibold text-[var(--text)] hover:bg-[var(--bg)]"
             >
               Discuss marketing on WhatsApp — 95050 09699
             </a>
-            <Link
-              href="/#contact"
-              className="inline-flex rounded-full border border-[var(--border)] px-5 py-2.5 text-sm font-semibold text-[var(--text)] hover:bg-[var(--bg)]"
-            >
-              Enquiry form on homepage
-            </Link>
+            {variant === "landing" ? (
+              <Link
+                href="/#contact"
+                className="inline-flex rounded-full border border-[var(--border)] px-5 py-2.5 text-sm font-semibold text-[var(--text)] hover:bg-[var(--bg)]"
+              >
+                Enquiry form on homepage
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>
