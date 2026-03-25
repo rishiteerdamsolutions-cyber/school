@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
@@ -37,6 +38,14 @@ export function Navbar() {
   ];
   const smartNavItems = [...links, plansItem, { href: "/crm", label: "Leads" }];
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navItems =
+    theme === "trust"
+      ? trustNavItems
+      : theme === "international"
+        ? internationalNavItems
+        : smartNavItems;
+
   const bar =
     theme === "smart"
       ? "border-b border-white/10 bg-[#21346e]/35 backdrop-blur-md"
@@ -67,12 +76,20 @@ export function Navbar() {
           e‑School<sup className="text-xs font-normal">®</sup>
         </Link>
 
-        <nav
-          className={`flex-1 justify-center ${
-            theme === "smart" ? "hidden lg:flex" : "hidden md:flex"
-          }`}
-          aria-label="Primary"
+        <button
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav"
+          onClick={() => setMobileOpen((v) => !v)}
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/20 backdrop-blur-md"
         >
+          <span aria-hidden className="block h-0.5 w-5 bg-white" />
+          <span aria-hidden className="block h-0.5 w-5 bg-white mt-1" />
+          <span aria-hidden className="block h-0.5 w-5 bg-white mt-1" />
+        </button>
+
+        <nav className="flex-1 justify-center hidden md:flex" aria-label="Primary">
           <ul
             className={`flex items-center text-sm ${
               theme === "international" || theme === "trust"
@@ -80,12 +97,7 @@ export function Navbar() {
                 : "flex-wrap justify-center gap-1"
             }`}
           >
-            {(theme === "trust"
-              ? trustNavItems
-              : theme === "international"
-                ? internationalNavItems
-                : smartNavItems
-            ).map((l) => (
+            {navItems.map((l) => (
               <li key={l.href}>
                 {l.href.startsWith("/") ? (
                   <Link
@@ -130,6 +142,41 @@ export function Navbar() {
           Begin Journey
         </a>
       </div>
+
+      {mobileOpen && (
+        <div
+          id="mobile-nav"
+          className="absolute left-0 right-0 top-full z-[96] border-b border-[var(--border)] bg-[var(--bg)]/92 backdrop-blur-xl p-4 md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+        >
+          <div className="flex flex-col gap-2">
+            {navItems.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href.startsWith("/") ? l.href : `/${l.href}`}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-md px-3 py-2 text-sm text-white/90 hover:text-white hover:bg-white/5"
+              >
+                {l.label}
+              </Link>
+            ))}
+
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className={
+                theme === "international" || theme === "trust"
+                  ? "liquid-glass mt-1 block w-full rounded-full px-6 py-2.5 text-center text-sm text-white transition-transform hover:scale-[1.03]"
+                  : "mt-1 block w-full rounded-full bg-white px-6 py-2.5 text-center text-sm font-semibold text-[#161a20] transition-transform hover:scale-[1.03]"
+              }
+            >
+              Begin Journey
+            </a>
+          </div>
+        </div>
+      )}
     </motion.header>
   );
 }
