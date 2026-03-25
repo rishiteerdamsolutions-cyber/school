@@ -6,19 +6,19 @@ import { useTheme } from "@/context/ThemeContext";
 const faqItems = [
   {
     q: "How quickly can we launch our school website?",
-    a: "Most schools can launch in 7 to 14 days, including content setup, admissions form mapping, and mobile QA.",
+    a: "Most schools can launch in 7 to 14 days once content and approvals are ready.",
   },
   {
     q: "Can the website directly help us get more admissions?",
-    a: "Yes. The structure is conversion-first: admissions CTAs, trust sections, parent FAQs, and lead capture paths optimized for campaigns.",
+    a: "Yes. It is built to encourage enquiries with clear calls-to-action and trust-focused content.",
   },
   {
-    q: "Will this website be SEO-friendly for local search?",
-    a: "Yes. It includes technical SEO foundations, schema-ready structure, clean headings, and pages designed for high-intent search queries.",
+    q: "Will parents find us easily online?",
+    a: "Yes. The pages are organized clearly so families can discover your school and understand your strengths quickly.",
   },
   {
-    q: "Can we track lead sources like Google Ads and social campaigns?",
-    a: "Yes. The admissions form captures UTM parameters so your team can see exactly which campaigns generate real enquiries.",
+    q: "Can we run marketing campaigns with this website?",
+    a: "Yes. This website is ready for ongoing digital marketing and admissions-focused promotions.",
   },
 ];
 
@@ -44,7 +44,7 @@ export function FAQ() {
             Parent questions that influence admissions decisions
           </h2>
           <p className="mt-4 text-[var(--text-muted)]">
-            These FAQs are intentionally written for high-intent search and parent decision-making.
+            Simple answers to the questions parents ask before taking admission.
           </p>
         </motion.div>
 

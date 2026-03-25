@@ -94,16 +94,15 @@ export function About() {
               viewport={{ once: true, margin: "-80px" }}
               className="lg:col-span-5"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--accent)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white">
                 Why parents choose this school
               </p>
               <h2 className="font-display mt-4 text-4xl font-semibold leading-tight text-[var(--text)] md:text-[2.75rem]">
-                High-trust positioning that increases premium admissions
+                A calm, trusted experience for modern families
               </h2>
               <p className="mt-6 text-[var(--text-muted)]">
-                This template combines elegant storytelling with measurable
-                admissions outcomes, so marketing teams and principals align on
-                the same goal: more qualified parent enquiries.
+                The website looks premium, feels clear on mobile, and gives
+                parents the confidence to take the next step quickly.
               </p>
             </motion.div>
             <motion.div
@@ -135,9 +134,9 @@ export function About() {
                 </div>
                 <div className="space-y-4">
                   {[
-                    ["Admissions landing pages", "Dedicated campaign pages for each grade.", "31%"],
-                    ["Parent confidence stack", "Results, faculty profiles, and testimonials above fold.", "2.1x"],
-                    ["Lead quality filters", "Capture grade, intent, and location before counsellor call.", "46%"],
+                    ["Quick parent enquiries", "Clear actions that encourage families to contact your team.", "31%"],
+                    ["Stronger first impression", "Story, results, and trust signals presented beautifully.", "2.1x"],
+                    ["Better follow-up quality", "Parents share what they need before the counselling call.", "46%"],
                   ].map(([title, desc, metric]) => (
                     <div
                       key={title}

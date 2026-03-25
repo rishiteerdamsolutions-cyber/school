@@ -94,7 +94,7 @@ export function Contact() {
               Plan a visit or ask a question
             </h2>
             <p className="mt-4 text-[var(--text-muted)]">
-              Short form with optional UTM fields for your admissions team.
+              Share your details and our admissions team will call you back.
             </p>
             <ul className="mt-8 space-y-3 text-sm">
               <li>
@@ -221,7 +221,7 @@ export function Contact() {
               </p>
             )}
             <p className="text-xs text-[var(--text-muted)]">
-              UTM capture active: source={attribution.utmSource || "direct"}, medium={attribution.utmMedium || "none"}
+              Your details are safe and used only for admissions support.
             </p>
           </motion.form>
         </div>

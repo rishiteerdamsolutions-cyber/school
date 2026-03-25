@@ -26,9 +26,9 @@ export const MARKETING_TIERS: MarketingTier[] = [
     title: "Launch & maintain",
     monthlyLabel: "₹4,000–₹8,000 / month",
     bullets: [
-      "SEO: keyword mapping, on-page fixes, basic schema check, 1 content update/month",
-      "Google Business: profile optimization + 2 posts/month + review guidance",
-      "Google Ads: 1–2 Search campaigns + call/form conversion tracking",
+      "SEO setup for local school searches and one monthly content update",
+      "Google Business profile setup and two monthly posts",
+      "Google Ads starter campaigns focused on calls and enquiries",
     ],
   },
   {
@@ -36,9 +36,9 @@ export const MARKETING_TIERS: MarketingTier[] = [
     title: "Scale leads",
     monthlyLabel: "₹9,000–₹18,000 / month",
     bullets: [
-      "SEO: 2 improvement rounds/month + 2 content pieces/month",
-      "Google Business: 4 posts/month + photos/Q&A plan + insights report",
-      "Google Ads: 2–3 campaigns + ad copy tests + weekly monitoring",
+      "SEO improvements twice a month with two content updates",
+      "Google Business growth plan with four monthly posts",
+      "Google Ads optimization with weekly checks and better ad copy",
     ],
   },
   {
@@ -46,9 +46,9 @@ export const MARKETING_TIERS: MarketingTier[] = [
     title: "Admissions engine",
     monthlyLabel: "₹19,000+ / month",
     bullets: [
-      "SEO: 3–4 rounds/month + 3–4 content pieces/month + ranking review",
-      "Google Business: weekly posts + review workflow + local scorecard",
-      "Google Ads: 3–5 campaigns + remarketing + weekly optimization",
+      "Advanced SEO with frequent updates and growth reviews",
+      "Google Business weekly activity and strong reputation plan",
+      "Full Google Ads management for aggressive admissions growth",
     ],
   },
 ];
@@ -56,19 +56,19 @@ export const MARKETING_TIERS: MarketingTier[] = [
 /** What each theme includes beyond design (product truth for sales copy). */
 export const THEME_VALUE_BULLETS: Record<ThemeId, string[]> = {
   trust: [
-    "Full responsive school website (all public sections you see in this demo)",
-    "Enquiry form with UTM capture → saved to your database",
-    "No lead CRM in the nav — teams manage enquiries offline or via email",
+    "Complete responsive school website with all core pages",
+    "Simple enquiry form for parents to contact your team",
+    "Best for schools that want a clean, affordable online presence",
   ],
   international: [
     "Everything in Regular School",
-    "Lead CRM at /crm (Leads in the header): list, status, notes — no login in this demo",
-    "Notice board cards with thumbnails (International layout)",
+    "Built-in leads dashboard for follow-up tracking",
+    "Stronger presentation for trust, branding, and admissions growth",
   ],
   smart: [
     "Everything in International School",
-    "Auto follow-up queue for Smart-theme enquiries: WhatsApp template when WHATSAPP_* env is configured; otherwise status stays pending",
-    "Premium hero + shaped CTA + Smart-only achievements chip and notice-board styling",
+    "Priority lead handling with faster parent follow-up flow",
+    "Premium high-conversion experience for top-tier school branding",
   ],
 };
 

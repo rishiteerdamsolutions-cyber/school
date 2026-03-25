@@ -21,8 +21,7 @@ export function FollowUpPanel({ leads }: { leads: CrmLead[] }) {
         Auto follow-up queue (Smart)
       </h2>
       <p className="mt-1 text-sm text-[var(--text-muted)]">
-        Pending = waiting for WhatsApp template env. Sent / failed / skipped
-        updates right after submit when configured.
+        Track each parent enquiry and see whether follow-up has started.
       </p>
       <div className="mt-4 overflow-x-auto">
         <table className="w-full min-w-[640px] text-left text-sm">

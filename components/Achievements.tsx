@@ -38,7 +38,7 @@ export function Achievements() {
               viewport={{ once: true }}
               className="rounded-full border border-[var(--primary)]/40 px-4 py-2 text-xs font-mono text-[var(--primary)]"
             >
-              LIVE · RESULTS DASHBOARD (DEMO)
+              LIVE · ADMISSIONS SUPPORT
             </motion.div>
           )}
         </div>

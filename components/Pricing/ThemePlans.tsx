@@ -26,10 +26,10 @@ export function ThemePlans({ variant, highlightTheme }: Props) {
 
     const valueLine =
       themeId === "smart"
-        ? "Smart CRM + real-time auto follow-up queue (WhatsApp when configured)."
+        ? "This is our premium option with fastest lead follow-up."
         : themeId === "international"
-          ? "Lead CRM dashboard to manage and follow up enquiries."
-          : "Enquiry form website (no CRM in Regular tier).";
+          ? "This includes a lead dashboard for structured counselling follow-up."
+          : "This is our most affordable website option for a quick launch.";
 
     const text = `Hi e‑School, I need a quotation for ${label} (${basePrice} + domain). ${valueLine} Please share next steps.`;
     return `${WHATSAPP_CONTACT_URL}?text=${encodeURIComponent(text)}`;
@@ -65,29 +65,17 @@ export function ThemePlans({ variant, highlightTheme }: Props) {
         {variant === "quotation" ? (
           <div className="mt-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5 text-sm text-[var(--text-muted)] md:p-6">
             <p className="font-semibold text-[var(--text)]">
-              Admin & follow-up (how it works in this demo)
+              Lead handling support
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
               <li>
-                <strong className="text-[var(--text)]">No login:</strong> CRM
-                is gated by theme selection only (demo).
+                Regular School focuses on simple enquiries and a lighter team workflow.
               </li>
               <li>
-                <strong className="text-[var(--text)]">Regular School:</strong>{" "}
-                no “Leads” link — enquiry form still saves to the database.
+                International School includes a leads dashboard for organised follow-up.
               </li>
               <li>
-                <strong className="text-[var(--text)]">
-                  International &amp; Smart:
-                </strong>{" "}
-                open <Link className="font-medium text-[var(--primary)] underline" href="/crm">/crm</Link>{" "}
-                from the header to manage leads (status + notes).
-              </li>
-              <li>
-                <strong className="text-[var(--text)]">Smart only:</strong>{" "}
-                follow-up queue + optional WhatsApp template send when{" "}
-                <code className="text-xs">WHATSAPP_*</code> env vars are set;
-                otherwise new leads stay <code className="text-xs">pending</code>.
+                Smart School adds the strongest follow-up workflow for premium admissions teams.
               </li>
             </ul>
           </div>
