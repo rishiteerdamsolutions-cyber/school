@@ -82,11 +82,31 @@ export function Navbar() {
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           onClick={() => setMobileOpen((v) => !v)}
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/20 backdrop-blur-md"
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-black/45 text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-md"
         >
-          <span aria-hidden className="block h-0.5 w-5 bg-white" />
-          <span aria-hidden className="block h-0.5 w-5 bg-white mt-1" />
-          <span aria-hidden className="block h-0.5 w-5 bg-white mt-1" />
+          <svg
+            aria-hidden
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {mobileOpen ? (
+              <>
+                <path d="M6 6l12 12" />
+                <path d="M18 6L6 18" />
+              </>
+            ) : (
+              <>
+                <path d="M3 6h18" />
+                <path d="M3 12h18" />
+                <path d="M3 18h18" />
+              </>
+            )}
+          </svg>
         </button>
 
         <nav className="flex-1 justify-center hidden md:flex" aria-label="Primary">
