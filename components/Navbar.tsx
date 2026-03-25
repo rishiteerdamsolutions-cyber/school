@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 
 const links = [
-  { href: "#pricing", label: "Plans" },
   { href: "#about", label: "About" },
   { href: "#admissions", label: "Admissions" },
   { href: "#facilities", label: "Facilities" },
@@ -19,7 +18,6 @@ const links = [
 /** Minimal cinematic nav (International + Regular hero spec). */
 const cinematicLinks: { href: string; label: string }[] = [
   { href: "#top", label: "Home" },
-  { href: "#pricing", label: "Plans" },
   { href: "#facilities", label: "Campus" },
   { href: "#about", label: "About" },
   { href: "#board", label: "News" },
@@ -28,6 +26,16 @@ const cinematicLinks: { href: string; label: string }[] = [
 
 export function Navbar() {
   const { theme } = useTheme();
+  const plansHref = `/quotation?theme=${theme}`;
+  const plansItem = { href: plansHref, label: "Plans" };
+  const trustNavItems = [cinematicLinks[0], plansItem, ...cinematicLinks.slice(1)];
+  const internationalNavItems = [
+    cinematicLinks[0],
+    plansItem,
+    ...cinematicLinks.slice(1),
+    { href: "/crm", label: "Leads" },
+  ];
+  const smartNavItems = [...links, plansItem, { href: "/crm", label: "Leads" }];
 
   const bar =
     theme === "smart"
@@ -72,12 +80,11 @@ export function Navbar() {
                 : "flex-wrap justify-center gap-1"
             }`}
           >
-            {(
-              theme === "trust"
-                ? cinematicLinks
-                : theme === "international"
-                  ? [...cinematicLinks, { href: "/crm", label: "Leads" }]
-                  : [...links, { href: "/crm", label: "Leads" }]
+            {(theme === "trust"
+              ? trustNavItems
+              : theme === "international"
+                ? internationalNavItems
+                : smartNavItems
             ).map((l) => (
               <li key={l.href}>
                 {l.href.startsWith("/") ? (
